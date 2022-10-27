@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>crear</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" media="all" href="/css/crear.css" th:href="@{/css/crear.css}" /> 
+    </head>
+    <body>
+        
+       <nav class="nav">   
+        <div >
+            <h1>Conciertos</h1>
+            <div >
+              <ul c>
+                <li >
+                  <a >Home</a>
+                </li>
+                <li >
+                  <a>About Us</a>
+                </li>
+                <li >
+                  <a >Exit</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+        
+        <div > 
+            <div >
+                
+
+                <div >
+                    <form th:object = "${concierto}"
+                          th:action="@{/save}"
+                          method="POST"
+                          >
+                        <input type="hidden" th:field="*{id}">
+                        
+                       <!-------------------Formulario Artista--------------- -->
+                        
+                        <div >
+                            <p >Artista</p>
+                            <div >
+                                
+                                <select  th:field="*{artista}" id="artista">
+                                    <option th:each="x:${artista}"
+                                            th:value="${x.id}"
+                                            th:text="${x.artista}"/>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div >
+                            <p >Costo</p>
+                            <div >
+                                <input th:field="*{costo}"  placeholder= "Costo" id="costo" >
+                            </div>
+                        </div>
+                        
+                        
+                        <div>
+                            <p >Fecha</p>
+                            <div >
+                                <input  th:field="*{fecha}"  placeholder= "Fecha" id="fecha" >
+                            </div>
+                        </div>
+                        
+                        <div >
+                            <p >Cap. Maxima</p>
+                            <div>
+                                <input th:field="*{capacidad_max}"  placeholder= "Capacidad Maxima pers." id="capacidad_max" >
+                            </div>
+                        </div>
+                        
+            
+                        <div >
+                            <p  >Lugar</p>
+                            <div>
+                                
+                                <select  th:field="*{lugar}"  id="lugar" >
+                                    <option th:each="x:${lugar}"
+                                            th:value="${x.id}"
+                                            th:text="${x.lugar}"/>
+                                </select>
+                            </div>
+                        </div>
+                        
+
+                        
+                        <button type="submit" value="Guardar">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>   
+        
+    </body>
+    
+</html>
